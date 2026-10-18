@@ -1,0 +1,10 @@
+{
+  "name": "VFit – Virtual Fashion Studio",
+  "description": "Premium virtual fashion studio featuring real-time 3D eyewear try-on with face tracking, AI virtual clothing fitting, product imports, and outfit styling.",
+  "requestFramePermissions": [
+    "camera"
+  ],
+  "majorCapabilities": [
+    "MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"
+  ]
+}
