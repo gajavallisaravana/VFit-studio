@@ -157,34 +157,19 @@ export const FaceTrackingCanvas: React.FC<Props> = ({
     const transmission = selectedLensTint?.transmission ?? 0.85;
     const lensRoughness = selectedLensTint?.roughness ?? 0.05;
 
-    const model = buildGlassesModel(
-      product.model3DType || 'aviator',
-      frameHex,
-      metalness,
-      roughness,
-      lensHex,
-      transmission,
-      lensRoughness
-    );
-    scene.add(model.group);
-    glassesModelRef.current = model;
+// 3D glasses model disabled.
+// User-uploaded glasses will be handled separately.
+glassesModelRef.current = null;
 
-    // Initial placement if in photo mode
-    if (mode === 'photo') {
-      model.group.position.set(0, 0.35, 0);
-      model.group.scale.set(0.6, 0.6, 0.6);
-    }
+// 3D glasses placement disabled.
 
-    // Render loop
-    const renderTick = () => {
-      if (isDestroyedRef.current) return;
-      animFrameId.current = requestAnimationFrame(renderTick);
-      if (showGlassesOverlay && !useOwnGlasses) {
-        renderer.render(scene, camera);
-      } else {
-        renderer.clear();
-      }
-    };
+// Render loop
+const renderTick = () => {
+  if (isDestroyedRef.current) return;
+  animFrameId.current = requestAnimationFrame(renderTick);
+
+  renderer.clear();
+};
     renderTick();
 
     const handleResize = () => {
